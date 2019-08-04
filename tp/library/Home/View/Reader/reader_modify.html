@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="Public/css/base.css" rel="stylesheet" />
+<link href="Public/css/style.css" rel="stylesheet" />
+<title>读者馆管理系统</title>
+</head>
+<script type="text/javascript">
+function check(form){
+	if(form.name.value==""){
+		alert("请输入读者姓名!");form.name.focus();return false;
+	}
+	if(form.barcode.value==""){
+		alert("请输入条形码!");form.barcode.focus();return false;
+	}
+	if(form.paperNO.value==""){
+		alert("请输入证件号码!");form.paperNO.focus();return false;
+	}
+}
+</script>
+<body>
+<div class="container">
+
+	{include file="../Public/navigation.html"}
+	
+	<div class="content book">
+		<div class="tableBorder_gray wrap">
+			<div class="breadcrumb word_orange">当前位置：读者管理 &gt; 读者档案管理 &gt; 修改读者信息 &gt;&gt;&gt;</div>
+			<form name="form" method="post" action="index.php?m=Home&c=Reader&a=index&method=modify">
+				<table width="600" height="432">
+					<tr>
+						<td width="173">姓名：</td>
+						<td width="427" height="39" style="text-align:left;">
+							<input name="name" type="text" value="{$res['info']['name']}" /> *
+							<input name="id" type="hidden" id="readerid" value="{$res['info']['id']}" /></td>
+						</td>
+					</tr>
+					<tr>
+						<td width="173">性别：</td>
+						<td height="35" style="text-align:left;">
+							<input name="sex" type="radio" class="noborder" value="1" {if $res['info']['sex'] eq 1}checked{/if} /> 男
+							<input name="sex" type="radio" class="noborder" value="0" {if $res['info']['sex'] eq 0}checked{/if}/> 女
+						</td>
+					</tr>
+					<tr>
+						<td>条形码：</td>
+						<td style="text-align:left;"><input name="barcode" type="text" id="barcode" value="{$res['info']['barcode']}" /> * </td>
+					</tr>
+					<tr>
+						<td>读者类型：</td>
+						<td style="text-align:left;">
+							<select name="typeid" class="wenbenkuang" id="typeid">
+								<option value="">请选择读者类型</option>
+								{foreach $res['rtype'] as $item}
+								<option value="{$item['id']}" {if $res['info']['typeid'] eq $item['id']}selected{/if}>{$item['name']}</option>
+								{/foreach}
+							</select>        
+						</td>
+					</tr>
+					<tr>
+						<td>职业：</td>
+						<td style="text-align:left;"><input name="vocation" type="text" id="vocation"></td>
+					</tr>
+					<tr>
+						<td>出生日期：</td>
+						<td style="text-align:left;"><input name="birthday" type="text" id="birthday"></td>
+					</tr>
+					<tr>
+						<td>有效证件：</td>
+						<td style="text-align:left;">
+							<select name="paperType" class="wenbenkuang" id="paperType">
+								<option>请选择证件</option>
+								<option value="身份证" {if $res['info']['paperType'] eq '身份证'}selected{/if}>身份证</option>
+								<option value="学生证" {if $res['info']['paperType'] eq '学生证'}selected{/if}>学生证</option>
+								<option value="军官证" {if $res['info']['paperType'] eq '军官证'}selected{/if}>军官证</option>
+								<option value="工作证" {if $res['info']['paperType'] eq '工作证'}selected{/if}>工作证</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>证件号码：</td>
+						<td  style="text-align:left;"><input name="paperNO" type="text" id="paperNO" value="{$res['info']['paperNO']}" /> * </td>
+					</tr>
+					<tr>
+						<td>电话：</td>
+						<td style="text-align:left;"><input name="tel" type="text" id="tel"></td>
+					</tr>
+					<tr>
+						<td>E-mail：</td>
+						<td style="text-align:left;"><input name="email" type="text" id="email" size="50">
+						<input name="operator" type="hidden" id="operator" value="{$res['user']['name']}"></td>
+					</tr>
+					<tr>
+						<td>备注：</td>
+						<td style="text-align:left;"><textarea name="remark" cols="50" rows="5" class="wenbenkuang" id="remark"></textarea></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td style="text-align:left;">
+							<input name="sub" type="submit" class="btn_grey" value="保存" onClick="return check(form)" />&nbsp;
+							<input name="sub2" type="button" class="btn_grey" value="返回" onClick="history.back()" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	
+	{include file="../Public/copyright.html"}
+	
+</div>
+</body>
+</html>

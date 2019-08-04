@@ -1,0 +1,22 @@
+/*hall*/
+.hall{ background:#51719e; }
+.hall .top{ height:32px; line-height:32px; background:url('../images/top_bar.gif'); color:#fff; padding-bottom:4px; }
+.hall .top table{ width:95%; margin:0 auto; }
+.hall .top table a{ color:#fff; }
+.hall .rooms{ text-align:center; color:#fff; }
+.hall .rooms ul{ width:65%; margin:30px auto 25px; }
+.hall .rooms ul li{ float:left; width:33.33%; padding:15px 0; }
+.hall .rooms ul li table{ margin:0 auto; }
+.hall .rooms ul li table .player1{ width:120px; text-align:right; padding:0 8px; }
+.hall .rooms ul li table .player2{ width:120px; text-align:left; padding:0 8px; }
+.hall .rooms ul li a{ color:#fff; }
+
+/*room*/
+.room{ background:url('../images/room/bg.gif'); color:#fff; }
+.room .loading{ text-align:center; padding:35px 10px 10px; }
+.room .wait{ text-align:center; padding:35px 10px 10px; }
+.main_echo{ text-align:center; }
+.main_echo table{ margin:0 auto; }
+.ani_show{ height:100px; }
+.self_show{ height:100px; }
+.self_button a{ padding:0 5px; }
